@@ -1,0 +1,30 @@
+//login form with moving submit buttom if password is invalid?
+<div *ngIf="formData.errors?.unauthenticated">
+ Username or Password incorrect!
+</div>
+
+
+<form
+ [formGroup]="formData"
+ (ngSubmit)="doLogin(formData.value)"
+ class="form-signin"
+ >
+ ...
+
+ <button
+   class="btn btn-lg btn-primary btn-block"
+   type="submit"
+ >
+ Login
+ </button>
+ <div *ngIf="formData.errors?.unauthenticated">
+   Username or Password incorrect!
+ </div>
+</form>
+
+
+
+
+<!--DELIMITER-->Source: https://stackoverflow.com/questions/69777737
+
+
