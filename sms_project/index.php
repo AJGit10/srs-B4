@@ -1,91 +1,64 @@
 <?php
-include("./public/meta.php");
 include('./public/header.php');
-if (isset($_POST['submit'])){
-  $userName = $_POST['eMail'];
-  $userpassword = $_POST['password'];
- $data= $auth->login($userName,$userpassword);
- 
+include('./public/meta.php');
+$error= "";
+session_start();
+if(isset($_POST['submit'])) {
+  $userName= $_POST['eMail'];
+  $userPassword= $_POST['password'];
+
+  // if(!empty($userName)|| !empty($userPassword)) {
+  //   $error="incomplete Credentials";
+  // } else {
+    $error = $auth->login($userName,$userPassword);
+    if ($error) {
+      echo "Logged in!";
+
+                $_SESSION['eMail'] = $userName;
+
+                $_SESSION['password'] = $userPassword;
+
+                
+
+               header("Location: dashboard.php");
+
+                exit();
+      
+   } else {
+    $error="Incorrect Credentials";
+   }
   }
+
+
+
+
+
 ?>
-
-<div class="container">
-    <div class="row px-3">
-      <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
-        <div class="img-left d-none d-md-flex"></div>
-
-        <div class="card-body">
-          <h4 class="title text-center mt-4">
-            Login into account
-          </h4>
-          <form class="form-box px-3">
-            <div class="form-input">
-              <span><i class="fa fa-envelope-o"></i></span>
-              <input type="email" name="" placeholder="Email Address" tabindex="10" required>
-            </div>
-            <div class="form-input">
-              <span><i class="fa fa-key"></i></span>
-              <input type="password" name="" placeholder="Password" required>
-            </div>
-
-            <!-- <div class="mb-3">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="cb1" name="">
-                <label class="custom-control-label" for="cb1">Remember me</label>
-              </div>
-            </div> -->
-
-            <div class="mb-3">
-              <button type="submit" class="btn btn-block text-uppercase">
-                Login
-              </button>
-            </div>
-
-            <div class="text-right">
-              <a href="./html/forgotpass.php" class="forget-link">
-                Forget Password?
-              </a>
-            </div>
-
-            <!-- <div class="text-center mb-3">
-              or login with
-            </div>
-
-            <div class="row mb-3">
-              <div class="col-4">
-                <a href="#" class="btn btn-block btn-social btn-facebook">
-                  facebook
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="#" class="btn btn-block btn-social btn-google">
-                  google
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="#" class="btn btn-block btn-social btn-twitter">
-                  twitter
-                </a>
-              </div>
-            </div>
-
-            <hr class="my-4">
-
-            <div class="text-center mb-2">
-              Don't have an account?
-              <a href="./html/register.php" class="register-link">
-                Register here
-              </a>
-            </div> -->
-          </form>
-        </div>
+  
+<!-- body start -->
+<div class="login-form">
+  <form action="index.php" method="POST">
+    <h1>Login into Your Account</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="email" placeholder="Email" autocomplete="nope" name="eMail"/>
       </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" autocomplete="new-password" name="password"/>
+      </div>
+      <a href="html/forgetPassword.html" class="link">Forgot Password?</a>
     </div>
-  </div>
+    <div class="action">
+    <!-- <button><a href="html/register.html">Register</a></button> -->
+    <!-- <button type="submit" name="submit" >Sign in</button> -->
+    <button><input type="submit" name="submit"  value="Login"></button>
+    <?php echo $error ? ($error) : (""); ?>
+    </div>
+  </form>
+</div>
+<!-- body end -->
 
 <?php
-// include('./public/footer.php');
 
+include('./public/footer.php');
 ?>
