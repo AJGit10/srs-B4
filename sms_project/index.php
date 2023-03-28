@@ -1,8 +1,16 @@
 <?php
-include('./public/header.php');
-include('./public/meta.php');
-$error= "";
+
 session_start();
+// $_SESSION['eMail'] = $userMail;
+// $_SESSION['password'] = $userPassword;
+// include('./public/header.php');
+// include('./public/meta.php');
+include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');
+include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
+
+
+
+$error= "";
 if(isset($_POST['submit'])) {
   $userName= $_POST['eMail'];
   $userPassword= $_POST['password'];
@@ -15,14 +23,16 @@ if(isset($_POST['submit'])) {
       echo "Logged in!";
 
                 $_SESSION['eMail'] = $userName;
+               
 
                 $_SESSION['password'] = $userPassword;
+                
 
                 
 
-               header("Location: dashboard.php");
+              //  header("Location: dashboard.php");
 
-                exit();
+                // exit();
       
    } else {
     $error="Incorrect Credentials";
@@ -46,12 +56,12 @@ if(isset($_POST['submit'])) {
       <div class="input-field">
         <input type="password" placeholder="Password" autocomplete="new-password" name="password"/>
       </div>
-      <a href="html/forgetPassword.html" class="link">Forgot Password?</a>
+     
+      <a href="./forgetPassword.php" class="link">Forgot Password?</a>
     </div>
     <div class="action">
-    <!-- <button><a href="html/register.html">Register</a></button> -->
-    <!-- <button type="submit" name="submit" >Sign in</button> -->
-    <button><input type="submit" name="submit"  value="Login"></button>
+   
+   <button><input type="submit" name="submit"  value="Login"></button>
     <?php echo $error ? ($error) : (""); ?>
     </div>
   </form>
@@ -60,5 +70,7 @@ if(isset($_POST['submit'])) {
 
 <?php
 
-include('./public/footer.php');
+// include('./public/footer.php');
+
+include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/footer.php');
 ?>

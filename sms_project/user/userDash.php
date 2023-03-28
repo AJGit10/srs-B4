@@ -24,7 +24,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 	<!-- Boxicons -->
 	<!-- <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> -->
 	<!-- My CSS -->
-	<link rel="stylesheet" href="./dash.css">
+	<link rel="stylesheet" href="../dash.css">
 
 	<title>SMS Portal</title>
 </head>
@@ -34,7 +34,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
-			<i class='bi bi-building-fill-gear'></i>
+		<i class='bi bi-building-fill-gear'></i>
 			<span class="text">SMS Portal</span>
 		</a>
 		<ul class="side-menu top">
@@ -45,27 +45,27 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</a>
 			</li>
 			<li>
-				<a href="./user/chairmenList.php">
-				<box-icon type='solid' name='user-pin'></box-icon>
-					<span class="text">Chair Person</span>
+				<a href="#">
+				<box-icon type='solid' name='buildings'></box-icon>
+					<span class="text">My Flat</span>
 				</a>
 			</li>
 			<li>
-				<a href="./user/updateUserN.php">
+				<a href="../user/updateUser.php">
 					<!-- <i class='bx bxs-doughnut-chart' ></i> -->
 					<box-icon type='solid' name='group'></box-icon>
-					<span class="text">Update User</span>
+					<span class="text">My Profile</span>	
 				</a>
 			</li>
 			<li>
-				<a href="./apartment/updateApt.php">																				
+				<a href="../apartment/updateApartment.php">																				
 					<!-- <i class='bx bxs-message-dots' ></i> -->
 					<box-icon name='duplicate'></box-icon>
-					<span class="text">Update Apartment</span>
+					<span class="text">Suggestions</span>
 				</a>
 			</li>
 			<li>
-				<a href="./notes/noteList.php">
+				<a href="../notes/meetNotes.php">
 					
 					<box-icon type='solid' name='edit'></box-icon>
 					<span class="text">Meet Notes</span>
@@ -81,7 +81,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</a>
 			</li>
 			<li>
-				<a href="logout.php" class="logout">
+				<a href="../logout.php" class="logout">
 					<!-- <i class='bx bxs-log-out-circle' ></i> -->
 					<box-icon name='log-out-circle'></box-icon>
 					<span class="text"><p><font color=Red>Logout</font></p></span>
@@ -99,23 +99,18 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="./user/userById.php" class="nav-link">Categories</a>
-			<form action="userById.php" method="post">
+			<a href="./user/getUserById.php" class="nav-link">Categories</a>
+			<form action="#">
 				<div class="form-input">
-				<input type="search" name="userId" placeholder="Search...">
-				<button type="submit" name="searchUserId" class="search-btn"><i class='bx bx-search'></i></button>
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
             <!-- <h1>WELCOME <?php echo $info['firstName']; ?></h1> -->
 			<!-- <h1><?php
                 echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'];
                 ?></h1> -->
-			<!-- <input type="checkbox" id="switch-mode" hidden>	
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a> -->
+			
 			<a href="#" class="profile">
 				<img src="aj.jpg">
 			</a>
@@ -126,7 +121,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Welcome Admin Dash</h1>
+					<h1>Welcome User Dash</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
@@ -142,59 +137,31 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 
 			<ul class="box-info">
 				<li>
-				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOVJREFUSEvtk9ERAUEQRN9lIAQZkAEiQARCEAIyEAIRkAEyIAMhyIBqtarOmrVzzvkyn3ez/XZ6egsarqJhff6ArMMpi1rADBgFhS2wAC5ZxaghBTgCnah3Dwy+AegDu4SQAAK5y5pgHuyxRGST/sd1DR9e9CyAfN8krjgGtI9aAB22dnACuglwpQmk0QaWwDAIroM15xLgIZrax92dOi/5Y4B2MAWUpnIpPVqylSK3RStgksmglSQX4F16Ymb8HlwAjd5zvqCDYaF5tLzk3NJiAVdAfgpwulOtzTVmNcnn7j8g694NZzEjGZb5xYoAAAAASUVORK5CYII="/>
+				<box-icon type='solid' name='user-circle'></box-icon>
 					<span class="text">
 					
-						<h3><a href="./user/addNewUser.php">Add New User</a></h3>
-			
+						<h3><a href="./user/userProfile.php">My Profile</a></h3>
+						<!-- <p>Registration</p> -->
 					</span>
-				</li>
-				<li>
-				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAFtJREFUSEtjZKAxYKSx+QyjFhAM4QEJov9QZ8Esh/EJuhZNH5iLzQc0t4BYlxKlbkDigCiXEatoQOJgNJJRomdAUhHN44DmFhCbxIlSNyBxQJTLiFU06gOCIQUAArwMGUsaCXEAAAAASUVORK5CYII="/>
-					<span class="text">
-						<h3><a href="./user/allUserListN.php">User List</a></h3>
-
-                    </span>
-				</li>
-				<li>
-				<i class="bi bi-building-add"></i>
-					<span class="text">
-						<h3><a href="./apartment/addNew.php">Add Apartment</a></h3>
-
-                    </span>
-				</li>
-				<li>
-				<box-icon type='solid' name='message-dots'></box-icon>
-					<span class="text">
-						<h3><a href="./notes/noteList.php">View Meet Notes</a></h3>
-
-                    </span>
 				</li>
 				<li>
 				<box-icon name='food-menu'></box-icon>
 					<span class="text">
-						<h3><a href="./notes/upmeet.php">Update Meet Notes</a></h3>
+						<h3><a href="../notes/noteList.php">View Meet Notes</a></h3>
+
+                    </span>
+				</li>
+				<li>
+				<box-icon type='solid' name='edit'></box-icon>
+					<span class="text">
+						<h3><a href="../notes/updateMeeting.php">Make Complaint</a></h3>
 
                     </span>
 				</li>
 				
-				<li>
 				
-				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKxJREFUSEvVldENgzAMRB+TlE5CV+lkrEI36SagVE2FzMeLVQEif8jnu8R3JB07r25nfkzgAYxA37iRN/AEpoo3gdJwaySvsNJzbxWYv0DbSOXb4K3xcIEoaN9qshFYPS1gfp/vgeU+5jw9opbcr3OeFrBYpuvxP0gTBNfVZDtytr6JaZbA8CoQc58e4ekeXPcEdudY/Tf66EF56gbrlvoLKFfOZ9mD86fWAQIL7EA9GZb3Lu8AAAAASUVORK5CYII="/>
-					<span class="text">
-						<h3><a href="./apartment/aptList.php">View Apartments</a></h3>
-			
-					</span>
 				</li>
 			</ul>
-
-            <!-- <div class="card">
-  <img src="aj.jpg" alt="Avatar" style="width:100%">
-  <div class="container"> -->
-    <!--<h4><b>Ajay Zalte</b></h4>
-    <p>A/P Yeola, Dist-Nashik 423402 MAHARASHTRA</p>
-  </div>
-</div>-->
 
 
 			

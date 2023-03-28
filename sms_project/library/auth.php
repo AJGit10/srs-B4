@@ -14,19 +14,22 @@ class Auth {
        $result = $conn->query($sql);
       // print_r($result);exit;
 
-        if ($result){
-          $rowCount = mysqli_num_rows($result);
-
-          if($rowCount==1){ 
-            return true;
-          } else {
-            return false;
-          }
+      if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result);
+        if ($row['rollId'] == '1') {
+            header("Location: ./dashboard.php");
+        } elseif ($row['rollId'] == '2') {
+            header("Location: ./user/chairmenDash.php");
+        } elseif ($row['rollId'] == '3') {
+            header("Location: ./user/userDash.php");
         } else {
-            return false;
-         }
-      }
-   }
+            echo "Incorrect Input";
+        }
+        // return true;
+    } else {
+        return false;
+    }
+  }}
 ?> 
 
 
