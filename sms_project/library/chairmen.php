@@ -15,10 +15,10 @@ Class Chairmen{
         
         return $result;
     }
-    function Update($userId,$firstName,$lastName,$userName,$assword){ 
+    function Update($userId,$firstName,$lastName,$userName,$password){ 
         global $conn;
         
-        $sql="UPDATE user SET firstName='".$firstName."',lastName='".$lastName."',email='".$userName."',uPassword='".$uPassword."' where userId=$userId";
+        $sql="UPDATE user SET firstName='".$firstName."',lastName='".$lastName."',email='".$userName."',passWord='".$password."' where userId=$userId";
         $result= $conn->query($sql);
         echo "Updated successfully";
         return $result;
@@ -33,9 +33,9 @@ Class Chairmen{
 
         return $result4;
       }
-    function list_note($n_Aid){
+    function list_note($aptId){
         global $conn;
-        $sql="SELECT * FROM notes WHERE aptid= $aptid ";
+        $sql="SELECT * FROM notes WHERE aptId= $aptId";
         $result= $conn->query($sql);
         return $result;
     }

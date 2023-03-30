@@ -99,6 +99,13 @@ function  deleteMeeting($noteId)
         $result =$conn->query($sql);
         echo "Deleted SuccessFully";
 }
+
+function updateNoteByCp($noteId,$noteAptId, $noteTitle, $noteDetails)
+    {
+        global $conn;
+        $query = "UPDATE note SET noteId = $noteId, aptId = $noteAptId, noteTitle = '$noteTitle', noteDetails = '$noteDetails' WHERE aptId = '$noteAptId'";
+        $conn->query($query);
+    }
 }
 // $Apartment = new Meet();
 

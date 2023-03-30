@@ -1,4 +1,5 @@
-
+<html>
+<body>
 <div id="card" class="animated fadeIn">
     <div id="upper-side">
         <?xml version="1.0" encoding="utf-8"?>

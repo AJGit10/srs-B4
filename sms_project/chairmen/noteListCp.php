@@ -1,10 +1,11 @@
-<?php
+ <?php
 session_start();
 // include("./protected/header.php");
 // include('./library/user.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/user.php');
-$idOfChairPerson = $info['aptId'];
+$fetch = $user->userInfo();
+$idOfChairPerson = $fetch['aptId'];
 ?>
 <!-- MAIN -->
 <main>
@@ -45,7 +46,7 @@ $idOfChairPerson = $info['aptId'];
 						</thead>
 						<tbody>
 							<?php
-							$sql = "SELECT apartment.aptId, apartment.name, note.noteId, note.noteTitle, note.noteDetails FROM apartment JOIN note ON apartment.aptId = note.aptId WHERE apartment.aptId = '$idOfChairPerson'";
+							$sql = "SELECT apartment.aptId, apartment.aptname, notes.noteId, notes.noteTitle, notes.noteDetails FROM apartment JOIN notes ON apartment.aptId = notes.aptId WHERE apartment.aptId = '$idOfChairPerson'";
 							$result = $conn->query($sql);
 							if (!$result) { ?>
 								<tr>
@@ -57,7 +58,7 @@ $idOfChairPerson = $info['aptId'];
 									echo
 										"<tr>
                                         <td>" . $row['aptId'] . "</td>
-                                        <td>" . $row['name'] . "</td>
+                                        <td>" . $row['aptname'] . "</td>
                                         <td>" . $row['noteId'] . "</td>
                                         <td>" . $row['noteTitle'] . "</td>
                                         <td>" . $row['noteDetails'] . "</td>" ?>
@@ -83,4 +84,9 @@ $idOfChairPerson = $info['aptId'];
 <?php
 // include("../../protected/footer.php");
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/footer.php');
-?>
+?> 
+
+
+
+
+<!-- ------------------------------------------ -->

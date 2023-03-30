@@ -1,74 +1,30 @@
+<?php
+session_start();
+include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
+// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/user.php');
+if (isset($_POST['updateUserSubmit'])) {
+    $userId = $_POST['userId'];
+    $userfirstName = $_POST['firstName'];
+    $userlastName = $_POST['lastName'];
+    $userEmail = $_POST['eMail'];
+    $userAptId = $_POST['aptId'];
 
-        
-        /* navbar css  */
-        body {
-            margin: 0;
-            font-size: 28px;
-            font-family: Arial, Helvetica, sans-serif;
-          }
-          
-          .header {
-            background-color: #f1f1f1;
-            padding: 30px;
-            text-align: center;
-          }
-          
-          #navbar {
-            overflow: hidden;
-            background-color:purple;
-          }
-          
-          #navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-          }
-          
-          #navbar a:hover {
-            background-color: #09c929;
-            color: black;
-          }
-          
-          #navbar a.active {
-            background-color: #319ee7;
-            color: #000000;
-          }
-          
-          .content {
-            padding: 16px;
-          }
-          
-          .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-          }
-          
-          .sticky + .content {
-            padding-top: 60px;
-          }
-          
-          
-          
-          /* //card icon? */
-          /* .card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            border-radius: 5px; /* 5px rounded corners */
-          /* } */ */
-          
-          /* Add rounded corners to the top left and the top right corner of the image
-          img {
-            border-radius: 5px 5px 0 0;
-          } */
- /* navbar css end */
+    $user->updateUserInfo($userId, $userfirstName, $userlastName, $userEmail,$userAptId);
+}
 
- 
-        {
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>                                                                                                                     
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -208,3 +164,60 @@
         }
 
        
+    </style>
+</head>
+
+<body>
+
+    <div class="login-form">
+    <?php
+        if (isset($_GET['id'])) {
+            $userId = $_GET['id'];
+            $user = "SELECT * FROM user WHERE userId = '$userId'";
+            $result = $conn->query($user);
+            if (mysqli_num_rows($result) > 0) {
+                foreach ($result as $user) 
+            
+                    ?>
+        <form action="" method="post">
+            <h1>Update User</h1>
+            <div class="content">
+            
+                <div class="input-field">
+                    <input type="number" value="<?= $user['userId']; ?>" class="tb" name="userId">
+                </div>
+                    <input type="text" placeholder="First name" class="tb" name="firstName">
+                    <br>
+                    <input type="text" placeholder="Last name" class="tb" name="lastName">
+                </div>
+
+                <div class="input-field">
+                    <input type="email" placeholder="Email" class="tb" name="eMail">
+                </div>
+                <div class="input-field">
+                    <input type="number" placeholder="Apartment Id" class="tb" name="aptId">
+                </div>
+            </div>
+            <div class="action">
+                <button type="submit" name="updateUserSubmit" value='Update' class="button">Update</button>
+               
+            </div>
+            <div class="action"> <a href="../dashboard.php"><button class="button">Back</button></a></div>
+        </form>
+        <?php
+         }
+        } else {
+            ?>
+            <h4>No DATA found</h4>
+                <?php
+            }
+        
+        ?>
+    </div>
+</body>
+
+</html>
+
+<?php
+// include('../../public/footer.php');
+?>

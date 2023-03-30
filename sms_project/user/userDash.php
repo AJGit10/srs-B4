@@ -7,7 +7,8 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
 // include("includes/config.php");	
-// $fetch = $user->userInfo();
+$fetch = $user->userInfo();
+// $idOfChairPerson = $fetch['aptId'];
 
  ?>
 
@@ -51,7 +52,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</a>
 			</li>
 			<li>
-				<a href="../user/updateUser.php">
+				<a href="userProfile.php">
 					<!-- <i class='bx bxs-doughnut-chart' ></i> -->
 					<box-icon type='solid' name='group'></box-icon>
 					<span class="text">My Profile</span>	
@@ -65,7 +66,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</a>
 			</li>
 			<li>
-				<a href="../notes/meetNotes.php">
+				<a href="meetListUser.php">
 					
 					<box-icon type='solid' name='edit'></box-icon>
 					<span class="text">Meet Notes</span>
@@ -107,9 +108,9 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</div>
 			</form>
             <!-- <h1>WELCOME <?php echo $info['firstName']; ?></h1> -->
-			<!-- <h1><?php
+			<h1><?php
                 echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'];
-                ?></h1> -->
+                ?></h1>
 			
 			<a href="#" class="profile">
 				<img src="aj.jpg">
@@ -140,14 +141,14 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				<box-icon type='solid' name='user-circle'></box-icon>
 					<span class="text">
 					
-						<h3><a href="./user/userProfile.php">My Profile</a></h3>
+						<h3><a href="userProfile.php">My Profile</a></h3>
 						<!-- <p>Registration</p> -->
 					</span>
 				</li>
 				<li>
 				<box-icon name='food-menu'></box-icon>
 					<span class="text">
-						<h3><a href="../notes/noteList.php">View Meet Notes</a></h3>
+						<h3><a href="../user/meetListUser.php">View Meet Notes</a></h3>
 
                     </span>
 				</li>

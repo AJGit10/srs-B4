@@ -4,9 +4,10 @@
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 
 class User{
-    function userInfo() {
+    function userInfo() 
+    {
         global $conn;
-    // echo "SESSION : ".$_SESSION['eMail'];
+    
         if (isset($_SESSION['eMail'])) {
             $existingUserMail = $_SESSION['eMail'];
         } else {

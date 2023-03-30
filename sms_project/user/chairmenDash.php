@@ -7,7 +7,8 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
 // include("includes/config.php");	
-// $fetch = $user->userInfo();
+$fetch = $user->userInfo();
+$idOfChairPerson = $fetch['aptId'];
 
  ?>
 
@@ -58,14 +59,14 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</a>
 			</li>
 			<li>
-				<a href="../apartment/updateApt.php">																				
+				<a href="../chairmen/updateAptByCp.php">																				
 					<!-- <i class='bx bxs-message-dots' ></i> -->
 					<box-icon name='duplicate'></box-icon>
 					<span class="text">Update Apartment</span>
 				</a>
 			</li>
 			<li>
-				<a href="../notes/noteList.php">
+				<a href="../chairmen/noteListCp.php">
 					
 					<box-icon type='solid' name='edit'></box-icon>
 					<span class="text">Meet Notes</span>
@@ -107,9 +108,9 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</div>
 			</form>
             <!-- <h1>WELCOME <?php echo $info['firstName']; ?></h1> -->
-			<!-- <h1><?php
+			<h1><?php
                 echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'];
-                ?></h1> -->
+                ?></h1>
 			<!-- <input type="checkbox" id="switch-mode" hidden>	
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
@@ -145,7 +146,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				<box-icon type='solid' name='user-circle'></box-icon>
 					<span class="text">
 					
-						<h3><a href="../user/userProfile.php">My Profile</a></h3>
+						<h3><a href="../chairmen/cpProfile.php">My Profile</a></h3>
 						<!-- <p>Registration</p> -->
 					</span>
 				</li>
@@ -153,37 +154,38 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOVJREFUSEvtk9ERAUEQRN9lIAQZkAEiQARCEAIyEAIRkAEyIAMhyIBqtarOmrVzzvkyn3ez/XZ6egsarqJhff6ArMMpi1rADBgFhS2wAC5ZxaghBTgCnah3Dwy+AegDu4SQAAK5y5pgHuyxRGST/sd1DR9e9CyAfN8krjgGtI9aAB22dnACuglwpQmk0QaWwDAIroM15xLgIZrax92dOi/5Y4B2MAWUpnIpPVqylSK3RStgksmglSQX4F16Ymb8HlwAjd5zvqCDYaF5tLzk3NJiAVdAfgpwulOtzTVmNcnn7j8g694NZzEjGZb5xYoAAAAASUVORK5CYII="/>
 					<span class="text">
 					
-						<h3><a href="../user/addNewUser.php">Add New User</a></h3>
+						<h3><a href="../chairmen/addUserByCp.php">Add New User</a></h3>
 			
 					</span>
 				</li>
 				<li>
 				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAFtJREFUSEtjZKAxYKSx+QyjFhAM4QEJov9QZ8Esh/EJuhZNH5iLzQc0t4BYlxKlbkDigCiXEatoQOJgNJJRomdAUhHN44DmFhCbxIlSNyBxQJTLiFU06gOCIQUAArwMGUsaCXEAAAAASUVORK5CYII="/>
 					<span class="text">
-						<h3><a href="../user/allUserListN.php">User List</a></h3>
-
-                    </span>
-				</li>
-				<li>
-				<i class="bi bi-building-add"></i>
-					<span class="text">
-						<h3><a href="../apartment/addNew.php">Add Apartment</a></h3>
+						<h3><a href="../chairmen/userListByCp.php">User List</a></h3>
 
                     </span>
 				</li>
 				
-				<li>
+				
+				<!-- <li>
 				
 				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKxJREFUSEvVldENgzAMRB+TlE5CV+lkrEI36SagVE2FzMeLVQEif8jnu8R3JB07r25nfkzgAYxA37iRN/AEpoo3gdJwaySvsNJzbxWYv0DbSOXb4K3xcIEoaN9qshFYPS1gfp/vgeU+5jw9opbcr3OeFrBYpuvxP0gTBNfVZDtytr6JaZbA8CoQc58e4ekeXPcEdudY/Tf66EF56gbrlvoLKFfOZ9mD86fWAQIL7EA9GZb3Lu8AAAAASUVORK5CYII="/>
 					<span class="text">
-						<h3><a href="../apartment/aptList.php">View Apartments</a></h3>
+						<h3><a href="../chairmen/viewAptByCp.php">View Apartments</a></h3>
 			
 					</span>
+				</li> -->
+				<li>
+				<box-icon name='food-menu'></box-icon>
+					<span class="text">
+						<h3><a href="../chairmen/addNoteByCp.php">Add Meeting Notes</a></h3>
+
+                    </span>
 				</li>
 				<li>
 				<box-icon type='solid' name='message-dots'></box-icon>
 					<span class="text">
-						<h3><a href="../notes/chairmenNoteList.php">View Meet Notes</a></h3>
+						<h3><a href="../chairmen/noteListByCp.php">View Meet Notes</a></h3>
 
                     </span>
 				</li>

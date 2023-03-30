@@ -4,6 +4,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/auth.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/user.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/apartment.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/meeting.php');
+include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/chairmen.php');
 
 
 $auth= new Auth();

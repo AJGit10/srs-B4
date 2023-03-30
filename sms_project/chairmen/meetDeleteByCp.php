@@ -1,74 +1,26 @@
+<?php
+session_start();
+include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
+if (isset($_POST['MeetDeleteSubmit'])) {
+    $meetId = $_POST['noteId'];
+   
 
-        
-        /* navbar css  */
-        body {
-            margin: 0;
-            font-size: 28px;
-            font-family: Arial, Helvetica, sans-serif;
-          }
-          
-          .header {
-            background-color: #f1f1f1;
-            padding: 30px;
-            text-align: center;
-          }
-          
-          #navbar {
-            overflow: hidden;
-            background-color:purple;
-          }
-          
-          #navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-          }
-          
-          #navbar a:hover {
-            background-color: #09c929;
-            color: black;
-          }
-          
-          #navbar a.active {
-            background-color: #319ee7;
-            color: #000000;
-          }
-          
-          .content {
-            padding: 16px;
-          }
-          
-          .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-          }
-          
-          .sticky + .content {
-            padding-top: 60px;
-          }
-          
-          
-          
-          /* //card icon? */
-          /* .card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            border-radius: 5px; /* 5px rounded corners */
-          /* } */ */
-          
-          /* Add rounded corners to the top left and the top right corner of the image
-          img {
-            border-radius: 5px 5px 0 0;
-          } */
- /* navbar css end */
+    $meeting->deleteMeeting($noteId);
+    
+}
+?>
 
- 
-        {
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>                                                                                                                     
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -208,3 +160,51 @@
         }
 
        
+    </style>
+</head>
+
+<body>
+
+    <div class="login-form">
+    <?php
+        if (isset($_GET['id'])) {
+            $noteId = $_GET['id'];
+            $meeting = "SELECT * FROM notes WHERE noteId = '$noteId'";
+            $result = $conn->query($meeting);
+            if (mysqli_num_rows($result) > 0) {
+                foreach ($result as $meeting) 
+            
+                    ?>
+        <form action="" method="post">
+            <h1>Delete Meeting</h1>
+            <div class="content">
+            
+                <div class="input-field">
+                    <input type="number" value="<?= $meeting['noteId']; ?>" class="tb" name="noteId">
+                        
+                    <div>
+                    <h2> <?php echo "Are You Sure!!!" ?> </h2>
+                    </div>
+            <div class="action">
+                <button type="submit" name="MeetDeleteSubmit" value='Delete' class="button"><p><font color=green>Yes Delete</font></p></button>
+               
+            </div>
+            <div class="action"> <a href="../dashboard.php"><button class="button"><p><font color=red>Cancel</font></p></button></a></div>
+        </form>
+        <?php
+         }
+        } else {
+            ?>
+            <h4>No DATA found</h4>
+                <?php
+            }
+        
+        ?>
+    </div>
+</body>
+
+</html>
+
+<?php
+// include('../../public/footer.php');
+?>

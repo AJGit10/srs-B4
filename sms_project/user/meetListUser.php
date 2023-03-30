@@ -4,10 +4,8 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/config.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/constants.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
-// include("includes/config.php");	
 $fetch = $user->userInfo();
+$userId = $fetch['aptId'];
 
  ?>
 
@@ -21,9 +19,7 @@ $fetch = $user->userInfo();
 	
 	<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
-	<!-- Boxicons -->
-	<!-- <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> -->
-	<!-- My CSS -->
+	
 	<link rel="stylesheet" href="../dash.css">
 
 	<title>SMS Portal</title>
@@ -34,43 +30,43 @@ $fetch = $user->userInfo();
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
+			<i class='bi bi-building-fill-gear'></i>
 			<span class="text">SMS Portal</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="../user/chairmenDash.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="./user/chairmenList.php">
 				<box-icon type='solid' name='user-pin'></box-icon>
 					<span class="text">Chair Person</span>
 				</a>
 			</li>
-			<li>
-				<a href="../user/updateUser.php">
-					<!-- <i class='bx bxs-doughnut-chart' ></i> -->
+			<!-- <li>
+				<a href="../user/updateUserN.php">
+					
 					<box-icon type='solid' name='group'></box-icon>
 					<span class="text">Update User</span>
 				</a>
 			</li>
 			<li>
-				<a href="../apartment/updateApartment.php">																				
-					<!-- <i class='bx bxs-message-dots' ></i> -->
-					<box-icon name='duplicate'></box-icon>
+				<a href="../chairmen/updateAptByCp.php">																				
+					 <i class='bx bxs-message-dots' ></i> -->
+					<!-- <box-icon name='duplicate'></box-icon>
 					<span class="text">Update Apartment</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
-				<a href="../notes/meetNotes.php">
+				<a href="../chairmen/noteListCp.php">
 					
 					<box-icon type='solid' name='edit'></box-icon>
 					<span class="text">Meet Notes</span>
 				</a>
-			</li>
+			</li> 
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -85,7 +81,7 @@ $fetch = $user->userInfo();
 					<!-- <i class='bx bxs-log-out-circle' ></i> -->
 					<box-icon name='log-out-circle'></box-icon>
 					<span class="text"><p><font color=Red>Logout</font></p></span>
-					<!-- <a href="logout.php">Logout</a> -->
+					
 				</a>
 			</li>
 		</ul>
@@ -99,14 +95,14 @@ $fetch = $user->userInfo();
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="./user/getUserById.php" class="nav-link">Categories</a>
-			<form action="#">
+			<a href="./user/userById.php" class="nav-link">Categories</a>
+			<form action="userById.php" method="post">
 				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				<input type="search" name="userId" placeholder="Search...">
+				<button type="submit" name="searchUserId" class="search-btn"><i class='bx bx-search'></i></button>
 				</div>
 			</form>
-            <!-- <h1>WELCOME <?php echo $info['firstName']; ?></h1> -->
+            
 			<h1><?php
                 echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'];
                 ?></h1>
@@ -119,44 +115,72 @@ $fetch = $user->userInfo();
 
 		<!-- MAIN -->
 		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Dashboard</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>
-				</div>
-				
-			</div>
+<style>
+        table,
+        th,
+        td {
+            
+            border: 1px solid;
+        }
+    </style>
+    
+    <main>
+	<div class="head-title">
+		<div class="left">
+			<h1>
+				Meeting List Of Society
+			</h1>
+		</div>
+	</div>
 
-			<ul class="box-info">
-				<li>
-				<box-icon type='solid' name='user-circle'></box-icon>
-					<span class="text">
-					
-						<h3><?php
-                echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'] . " " . $fetch['userId']
-                ?></h3>
-						<!-- <p>Registration</p> -->
-					</span>
-				</li>
-				<li>
-				<box-icon type='solid' name='message-dots'></box-icon>
-					<span class="text">
-						<h3><a href="meetListUser.php">View Meet Notes</a></h3>
+	<ul class="box-info">
+		<li>
+			<!-- <i class='bx bxs-smile'></i> -->
+			<span class="text">
+				<h3>
+					<table class='table'>
+						<thead>
+							<tr>
+								<th>Apartment Id</th>
+								<th>Apartment Name</th>
+								<th>Note Id</th>
+								<th>Note Title</th>
+								<th>Note Details</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$sql = "SELECT apartment.aptId, apartment.aptname, notes.noteId, notes.noteTitle, notes.noteDetails FROM apartment JOIN notes ON apartment.aptId = notes.aptId WHERE apartment.aptId = '$userId'";
+							$result = $conn->query($sql);
+							if (!$result) { ?>
+								<tr>
+									<td colspan="7">No Results found</td>
+								</tr>
+							<?php } else { ?>
+								<?php
+								while ($row = $result->fetch_assoc()) {
+									echo
+										"<tr>
+                                        <td>" . $row['aptId'] . "</td>
+                                        <td>" . $row['aptname'] . "</td>
+                                        <td>" . $row['noteId'] . "</td>
+                                        <td>" . $row['noteTitle'] . "</td>
+                                        <td>" . $row['noteDetails'] . "</td>" ?>
+										
+											
+										</td>
+										</tr>
+								<?php } ?>
+							<?php } ?>
+						</tbody>
+					</table>
+				</h3>
+			</span>
+		</li>
+	</ul>
+</main>
 
-                    </span>
-				</li>
-				
-			</ul>
 
-
-			
 </body>
 </html>

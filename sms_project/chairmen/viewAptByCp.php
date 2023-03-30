@@ -8,6 +8,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
 // include("includes/config.php");	
 $fetch = $user->userInfo();
+$idOfChairPerson = $fetch['aptId'];
 
  ?>
 
@@ -24,7 +25,7 @@ $fetch = $user->userInfo();
 	<!-- Boxicons -->
 	<!-- <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> -->
 	<!-- My CSS -->
-	<link rel="stylesheet" href="./dash.css">
+	<link rel="stylesheet" href="../dash.css">
 
 	<title>SMS Portal</title>
 </head>
@@ -51,21 +52,20 @@ $fetch = $user->userInfo();
 				</a>
 			</li>
 			<li>
-				<a href="./user/updateUserN.php">
+				<a href="./chairmen/updateUserByCp.php">
 					<!-- <i class='bx bxs-doughnut-chart' ></i> -->
 					<box-icon type='solid' name='group'></box-icon>
 					<span class="text">Update User</span>
 				</a>
 			</li>
 			<li>
-				<a href="./apartment/updateApt.php">																				
-					<!-- <i class='bx bxs-message-dots' ></i> -->
+				<a href="./chairmen/updateAptByCp.php">																		
 					<box-icon name='duplicate'></box-icon>
 					<span class="text">Update Apartment</span>
 				</a>
 			</li>
 			<li>
-				<a href="./notes/noteList.php">
+				<a href="./chairmen/noteListByCp.php">
 					
 					<box-icon type='solid' name='edit'></box-icon>
 					<span class="text">Meet Notes</span>
@@ -106,7 +106,7 @@ $fetch = $user->userInfo();
 				<button type="submit" name="searchUserId" class="search-btn"><i class='bx bx-search'></i></button>
 				</div>
 			</form>
-            
+            <!-- <h1>WELCOME <?php echo $info['firstName']; ?></h1> -->
 			<h1><?php
                 echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'];
                 ?></h1>
@@ -119,77 +119,75 @@ $fetch = $user->userInfo();
 
 		<!-- MAIN -->
 		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Welcome Admin Dash</h1>
-					<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>
-				</div>
-				
-			</div>
+<style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+    </style>
+    
+    <div class="head-title">
+        <div class="left">
+            <h1>
+                List Of All Apartments
+            </h1>
+        </div>
+    </div>
 
-			<ul class="box-info">
-				<li>
-				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOVJREFUSEvtk9ERAUEQRN9lIAQZkAEiQARCEAIyEAIRkAEyIAMhyIBqtarOmrVzzvkyn3ez/XZ6egsarqJhff6ArMMpi1rADBgFhS2wAC5ZxaghBTgCnah3Dwy+AegDu4SQAAK5y5pgHuyxRGST/sd1DR9e9CyAfN8krjgGtI9aAB22dnACuglwpQmk0QaWwDAIroM15xLgIZrax92dOi/5Y4B2MAWUpnIpPVqylSK3RStgksmglSQX4F16Ymb8HlwAjd5zvqCDYaF5tLzk3NJiAVdAfgpwulOtzTVmNcnn7j8g694NZzEjGZb5xYoAAAAASUVORK5CYII="/>
-					<span class="text">
-					
-						<h3><a href="./user/addNewUser.php">Add New User</a></h3>
-			
-					</span>
-				</li>
-				<li>
-				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAFtJREFUSEtjZKAxYKSx+QyjFhAM4QEJov9QZ8Esh/EJuhZNH5iLzQc0t4BYlxKlbkDigCiXEatoQOJgNJJRomdAUhHN44DmFhCbxIlSNyBxQJTLiFU06gOCIQUAArwMGUsaCXEAAAAASUVORK5CYII="/>
-					<span class="text">
-						<h3><a href="./user/allUserListN.php">User List</a></h3>
+    <ul class="box-info">
+        <li>
+            <!-- <i class='bx bxs-smile'></i> -->
+            <span class="text">
+                <h3>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>Apartment Id</th>
+                                <th>Apartment Name</th>
+                                <th>Apt Address</th>
+                                
+                                <th>Update</th>
+                                <th>Delete</th>
 
-                    </span>
-				</li>
-				<li>
-				<i class="bi bi-building-add"></i>
-					<span class="text">
-						<h3><a href="./apartment/addNew.php">Add Apartment</a></h3>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql = "SELECT 'aptId', 'aptName', 'aptAddress' FROM 'apartment' WHERE 'aptId' = 2222";
+                            $result = $conn->query($sql);
+                            while ($row = $result->fetch_assoc())
+                            {echo
+                                    "<tr>
+                                        <td>" . $row['aptId'] . "</td>
+                                        <td>" . $row['aptName'] . "</td>
+                                        <td>" . $row['aptAddress'] . "</td>"
+                                    
+                                        ?>
+                                    <td><a href="./updateAptByCp.php?id=<?=$row['aptId'] ?>"><button
+                                                style="background-color:green;  border: none;  color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer; ">Update</button></a>
+                                    </td>
+                                    <td><a href="./aptDelete.php?id=<?=$row['aptId'] ?>"><button
+                                                style="background-color:red;  border: none;  color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer; ">Delete</button></a>
+                                    </td>
+                                    </tr>
+                                    
+                                        <?php  ?>
+                                    <?php } ?>
+                                    
+                                
+                                
+                                      
+                            
+                            </tbody>
+                        </table>
 
-                    </span>
-				</li>
-				<li>
-				<box-icon type='solid' name='message-dots'></box-icon>
-					<span class="text">
-						<h3><a href="./notes/noteList.php">View Meet Notes</a></h3>
-
-                    </span>
-				</li>
-				<li>
-				<box-icon name='food-menu'></box-icon>
-					<span class="text">
-						<h3><a href="./notes/upmeet.php">Update Meet Notes</a></h3>
-
-                    </span>
-				</li>
-				
-				<li>
-				
-				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKxJREFUSEvVldENgzAMRB+TlE5CV+lkrEI36SagVE2FzMeLVQEif8jnu8R3JB07r25nfkzgAYxA37iRN/AEpoo3gdJwaySvsNJzbxWYv0DbSOXb4K3xcIEoaN9qshFYPS1gfp/vgeU+5jw9opbcr3OeFrBYpuvxP0gTBNfVZDtytr6JaZbA8CoQc58e4ekeXPcEdudY/Tf66EF56gbrlvoLKFfOZ9mD86fWAQIL7EA9GZb3Lu8AAAAASUVORK5CYII="/>
-					<span class="text">
-						<h3><a href="./apartment/aptList.php">View Apartments</a></h3>
-			
-					</span>
-				</li>
-			</ul>
-
-            <!-- <div class="card">
-  <img src="aj.jpg" alt="Avatar" style="width:100%">
-  <div class="container"> -->
-    <!--<h4><b>Ajay Zalte</b></h4>
-    <p>A/P Yeola, Dist-Nashik 423402 MAHARASHTRA</p>
-  </div>
-</div>-->
+                       
+                </h3>
+            </span>
+        </li>
+    </ul>
+</main>
 
 
 			
