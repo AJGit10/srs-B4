@@ -1,15 +1,12 @@
 <?php
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 if (isset($_POST['NoteDeleteSubmit'])) {
     $noteId = $_POST['noteId'];
-    // $userfirstName = $_POST['firstName'];
-    // $userlastName = $_POST['lastName'];
-    // $userEmail = $_POST['eMail'];
-    // $userAptId = $_POST['aptId'];
+  
 
     $meeting->deleteMeeting($noteId);
-    // , $userfirstName, $userlastName, $userEmail,$userAptId);
+    
 }
 ?>
 

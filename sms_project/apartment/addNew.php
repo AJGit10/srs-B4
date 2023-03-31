@@ -1,10 +1,10 @@
 <?php
-
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
+$auth->isLoggedin();
 
-session_start();
-// include('../library/user.php');
+
 if (isset($_POST['newApartmentSubmit'])) {
     $aptName = $_POST['aptName'];   
     $aptId = $_POST['aptId'];
@@ -57,7 +57,7 @@ if (isset($_POST['newApartmentSubmit'])) {
             <div class="action">
                 <button type="submit" name="newApartmentSubmit" value='Create' class="button">Create</button><br>
                 <a href="dashboard.php"><button class="button">Back</button></a>
-                <!-- <button><input type="submit" name="submit" value="signup"></button> -->
+                
             </div>
         </form>
     </div>

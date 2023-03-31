@@ -1,7 +1,7 @@
 <?php
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/user.php');
+
 if (isset($_POST['updateUserSubmit'])) {
     $userId = $_POST['userId'];
     $userfirstName = $_POST['firstName'];

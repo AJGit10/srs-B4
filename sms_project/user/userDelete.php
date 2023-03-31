@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 if (isset($_POST['UserDeleteSubmit'])) {
     $userId = $_POST['userId'];

@@ -4,7 +4,7 @@
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
 
-session_start();
+// session_start();
 // include('../library/user.php');
 if (isset($_POST['newUserSubmit'])) {
     $userfirstName = $_POST['firstName'];   

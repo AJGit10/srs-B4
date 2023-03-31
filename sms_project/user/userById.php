@@ -1,8 +1,6 @@
 <?php
-session_start();
-// include('../../library/user.php');
-// include("../../protected/header.php");
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/user.php');                              
+// session_start();
+                              
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
 

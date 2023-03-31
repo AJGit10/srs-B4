@@ -3,8 +3,8 @@
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
 
-session_start();
-// include('../library/user.php');
+// session_start();
+
 if (isset($_POST['updateApartmentSubmit'])) {
     $aptName = $_POST['aptName'];   
     $aptId = $_POST['aptId'];

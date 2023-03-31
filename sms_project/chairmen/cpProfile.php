@@ -1,12 +1,10 @@
 <?php 
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/config.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/constants.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
-// include("includes/config.php");	
+
 $fetch = $user->userInfo();
 
  ?>

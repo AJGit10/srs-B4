@@ -1,10 +1,9 @@
 <?php
-// include('../protected/header.php');
-// include('../public/meta.php');
+
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
-
-session_start();
+$auth->isLoggedin();
+// session_start();
 // include('../library/user.php');
 if (isset($_POST['newMeetSubmit'])) {
     $meetId = $_POST['noteId'];   

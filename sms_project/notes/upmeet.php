@@ -1,7 +1,7 @@
 <?php
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/meeting.php');
+
 if (isset($_POST['updateMeetSubmit'])) {
     $meetId = $_POST['noteId'];   
     $meetAptId = $_POST['aptId'];

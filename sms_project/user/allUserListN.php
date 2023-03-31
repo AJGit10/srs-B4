@@ -1,13 +1,11 @@
 <?php 
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/config.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/constants.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
-// include("includes/config.php");	
-// $fetch = $user->userInfo();
+	
+$fetch = $user->userInfo();
 
  ?>
 
@@ -107,9 +105,9 @@ include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
 				</div>
 			</form>
             <!-- <h1>WELCOME <?php echo $info['firstName']; ?></h1> -->
-			<!-- <h1><?php
+			<h1><?php
                 echo "Welcome " . $fetch['firstName'] . " " . $fetch['lastName'];
-                ?></h1> -->
+                ?></h1>
 			<!-- <input type="checkbox" id="switch-mode" hidden>	
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">

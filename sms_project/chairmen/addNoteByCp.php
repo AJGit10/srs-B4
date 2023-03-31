@@ -1,14 +1,13 @@
 <?php
-session_start();
-// include('../protected/header.php');
-// include('../public/meta.php');
+// session_start();
+
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
 
 $fetch = $user->userInfo();
 $idOfChairPerson = $fetch['aptId'];
 
-// include('../library/user.php');
+
 if (isset($_POST['addNoteSubmit'])) {
     $meetId = $_POST['noteId'];   
     $meetAptId = $fetch['aptId'];

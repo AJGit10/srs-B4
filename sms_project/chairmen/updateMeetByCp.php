@@ -1,7 +1,7 @@
 <?php
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/library/meeting.php');
+
 
 $fetch = $user->userInfo();
 $idOfChairPerson = $fetch['aptId'];

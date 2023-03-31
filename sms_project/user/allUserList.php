@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 // include("./protected/header.php");
 // include('./library/user.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');

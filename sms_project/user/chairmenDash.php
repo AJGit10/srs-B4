@@ -1,12 +1,12 @@
 <?php 
-session_start();
+// session_start();
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/config.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/constants.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/includes/database.php');
+if(!isset($_COOKIE['userName'])){
+	header('location:../index.php');
+}
 
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
-// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/header.php');	
-// include("includes/config.php");	
 $fetch = $user->userInfo();
 $idOfChairPerson = $fetch['aptId'];
 
@@ -83,10 +83,10 @@ $idOfChairPerson = $fetch['aptId'];
 			</li>
 			<li>
 				<a href="../logout.php" class="logout">
-					<!-- <i class='bx bxs-log-out-circle' ></i> -->
+					
 					<box-icon name='log-out-circle'></box-icon>
 					<span class="text"><p><font color=Red>Logout</font></p></span>
-					<!-- <a href="logout.php">Logout</a> -->
+					
 				</a>
 			</li>
 		</ul>
