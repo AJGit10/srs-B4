@@ -2,7 +2,7 @@
 
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
-
+$auth->isLoggedin();
 // session_start();
 
 if (isset($_POST['updateApartmentSubmit'])) {

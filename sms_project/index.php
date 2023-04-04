@@ -35,10 +35,10 @@ if (isset($_POST['submit'])) {
   <form action="index.php" method="POST">
     <h1>Login into Your Account</h1>
     <div class="content">
-      <div class="input-field">
+      <div class="input-field" action="index.php" method="post">
         <input type="email" placeholder="Email" autocomplete="nope" name="eMail" />
       </div>
-      <div class="input-field">
+      <div class="input-field" >
         <input type="password" placeholder="Password" autocomplete="new-password" name="password" />
       </div>
 
@@ -52,6 +52,7 @@ if (isset($_POST['submit'])) {
     <div class="larger">
       <input type="checkbox" name="Remember">Keep Me Logged In
 </div>
+
   </form>
 </div>
 <!-- body end -->

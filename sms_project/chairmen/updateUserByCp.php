@@ -179,7 +179,7 @@ if (isset($_POST['updateUserSubmit'])) {
                 foreach ($result as $user) 
             
                     ?>
-        <form action="" method="post">
+        <form action="../send.php" method="post">
             <h1>Update User</h1>
             <div class="content">
             
@@ -198,7 +198,7 @@ if (isset($_POST['updateUserSubmit'])) {
                     <input type="number" placeholder="Apartment Id" class="tb" name="aptId">
                 </div>
             </div>
-            <div class="action">
+            <div class="input-field" action="../send.php">
                 <button type="submit" name="updateUserSubmit" value='Update' class="button">Update</button>
                
             </div>

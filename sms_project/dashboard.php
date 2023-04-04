@@ -55,7 +55,7 @@ $fetch = $user->userInfo();
 			</li>
 			<li>
 				<a href="./user/updateUserN.php">
-					<!-- <i class='bx bxs-doughnut-chart' ></i> -->
+					
 					<box-icon type='solid' name='group'></box-icon>
 					<span class="text">Update User</span>
 				</a>

@@ -79,7 +79,7 @@ $fetch = $user->userInfo();
 				</a>
 			</li>
 			<li>
-				<a href="logout.php" class="logout">
+				<a href="../logout.php" class="logout">
 					<!-- <i class='bx bxs-log-out-circle' ></i> -->
 					<box-icon name='log-out-circle'></box-icon>
 					<span class="text"><p><font color=Red>Logout</font></p></span>

@@ -46,7 +46,7 @@ if (isset($_POST['newUserSubmit'])) {
     <!-- partial:index.partial.html -->
     <div class="login-form">
         
-        <form action="" method="post">
+        <form action="../send.php" method="post">
             <h1>Add new user</h1>
             <div class="content">
                 <div class="input-field">
@@ -69,7 +69,7 @@ if (isset($_POST['newUserSubmit'])) {
                     <input type="text" placeholder="roleId" class="tb" name="rollId" required>
                 </div>
             </div>
-            <div class="action">
+            <div class="input-field" action="../send.php">
                 <button type="submit" name="newUserSubmit" value='Sign up' class="button">sign up</button><br>
                 <a href="dashboard.php"><button class="button">Back</button></a>
                 <!-- <button><input type="submit" name="submit" value="signup"></button> -->

@@ -2,7 +2,11 @@
 
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
 include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
+// include($_SERVER["DOCUMENT_ROOT"].'/sms_project/send.php');
 
+
+$auth->isLoggedin();
+// $send->send();
 // session_start();
 $fetch = $user->userInfo();
 $idOfChairPerson = $fetch['aptId'];
@@ -38,7 +42,7 @@ if (isset($_POST['newUserSubmit'])) {
    
     <div class="login-form">
         
-        <form action="" method="post">
+        <form action="../send.php" method="post">
             <h1>Add new user</h1>
             <div class="content">
                 <div class="input-field">
@@ -63,7 +67,7 @@ if (isset($_POST['newUserSubmit'])) {
                         <option value="3">User</option>
                     </select>
             </div>
-            <div class="action">
+            <div class="input-field" action="../send.php">
                 <button type="submit" name="newUserSubmit" value='Sign up' class="button">ADD</button><br>
                 <a href="./dashboard.php"><button class="button">Back</button></a>
                 <!-- <button><input type="submit" name="submit" value="signup"></button> -->
