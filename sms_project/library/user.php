@@ -44,11 +44,11 @@ class User{
         }
     }
 
-    function add($userfirstName, $userlastName, $userMail, $userPassword, $userAptId, $userRollId) //adding new user
+    function add($firstName, $lastName, $eMail, $password, $AptId, $rollId, $profilPic) //adding new user
     {
         //code to add new user entry
         global $conn;
-        $sql = "INSERT INTO user(firstName, lastName, eMail, password, aptId, rollId) VALUES('$userfirstName','$userlastName','$userMail','$userPassword', '$userAptId', '$userRollId')";
+        $sql = "INSERT INTO user(firstName, lastName, eMail, password, aptId, rollId, profile) VALUES('$firstName','$lastName','$eMail','$password', '$AptId', '$rollId','$profilPic')";
 
         $output = $conn->query($sql);
         if (!$output) {
@@ -101,7 +101,20 @@ function  deleteUser($userId)
         // echo $sql;
         $result =$conn->query($sql);
         echo "Deleted SuccessFully";
+        header("location:../user/allUserListN.php");
 }
+
+// function validateUsername($firstName, $lastName) {
+//     // Only allow letters and underscores
+//     $pattern = '/^[a-zA-Z_]+$/';
+    
+//     // Test if the username matches the pattern
+//     if (preg_match($pattern, $firstName,$lastName)) {
+//       return true;
+//     } else {
+//       return false;
+//     }    
+//   }
 }
 // }
 $user = new User();

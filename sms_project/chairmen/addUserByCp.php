@@ -1,7 +1,7 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
-include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
+include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/protected/header.php');
+include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/public/meta.php');
 // include($_SERVER["DOCUMENT_ROOT"].'/sms_project/send.php');
 
 
@@ -12,14 +12,19 @@ $fetch = $user->userInfo();
 $idOfChairPerson = $fetch['aptId'];
 
 if (isset($_POST['newUserSubmit'])) {
-    $userfirstName = $_POST['firstName'];   
+    $userfirstName = $_POST['firstName'];
     $userlastName = $_POST['lastName'];
     $userMail = $_POST['eMail'];
     $userPassword = $_POST['password'];
     $userAptId = $fetch['aptId'];
-    $userRollId =3;
+    $userRollId = 3;
+    if (!preg_match("/^[a-zA-Z_]+$/", $userfirstName, $userlastName)) {
+        echo "Please Enter Valid Name";
+    } else {
+        $user->add($userfirstName, $userlastName, $userMail, $userPassword, $userAptId, $userRollId);
+    }
 
-    $user->add($userfirstName, $userlastName, $userMail, $userPassword, $userAptId, $userRollId);
+
 
 }
 
@@ -35,14 +40,14 @@ if (isset($_POST['newUserSubmit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../user/style1.css">
     <title>New User</title>
-    
+
 </head>
 
 <body>
-   
+
     <div class="login-form">
-        
-        <form action="../send.php" method="post">
+
+        <form action=" " method="post">
             <h1>Add new user</h1>
             <div class="content">
                 <div class="input-field">
@@ -59,25 +64,29 @@ if (isset($_POST['newUserSubmit'])) {
                     <input type="password" placeholder="Password" autocomplete="new-password" name="password" required>
                 </div>
                 <div class="input-Box">
-                <label for="aptId"> Apartment Id: </label>
+                    <label for="aptId"> Apartment Id: </label>
                     <input type="text" value="<?= $idOfChairPerson ?>" class="tb" name="aptId" disabled>
                     <br>
                     <label for="rollId"> Role: </label>
                     <select name="rollId" class="tb" disabled>
                         <option value="3">User</option>
                     </select>
-            </div>
-            <div class="input-field" action="../send.php">
-                <button type="submit" name="newUserSubmit" value='Sign up' class="button">ADD</button><br>
-                <a href="./dashboard.php"><button class="button">Back</button></a>
-                <!-- <button><input type="submit" name="submit" value="signup"></button> -->
-            </div>
+                </div>
+                <div class="input-field" action=" ">
+                    <button type="submit" name="newUserSubmit" value='Sign up' class="button">ADD</button>
+                </div>
+                <div class="input-field" action="./chairmen/chairmendash.php">
+                    <button type="submit" name="back" value='back' class="button">Back</button>
+                </div>
+
         </form>
+
     </div>
+
 </body>
 
 </html>
 
 <!-- <?php
-include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/footer.php');
+include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/protected/footer.php');
 ?> -->

@@ -9,8 +9,13 @@ if (isset($_POST['updateUserSubmit'])) {
     $userEmail = $_POST['eMail'];
     $userAptId = $_POST['aptId'];
 
-    $user->updateUserInfo($userId, $userfirstName, $userlastName, $userEmail,$userAptId);
-}
+    if (!preg_match("/^[a-zA-Z_]+$/", $userfirstName, $userlastName)) {
+        echo "Please Enter Valid Name";
+    } else{
+        $user->updateUserInfo($userId, $userfirstName, $userlastName, $userEmail,$userAptId);
+    }
+    }
+    
 
 ?>
 
@@ -177,9 +182,10 @@ if (isset($_POST['updateUserSubmit'])) {
             
             <div class="input-field">
                     <input type="number" placeholder="User ID" class="tb" name="userId">
-                </div>
+                <div class="input-field">
                     <input type="text" placeholder="First name" class="tb" name="firstName">
-                    <br>
+                    </div>
+                    <div class="input-field">
                     <input type="text" placeholder="Last name" class="tb" name="lastName">
                 </div>
 
@@ -192,7 +198,7 @@ if (isset($_POST['updateUserSubmit'])) {
             </div>
             <div class="action">
                 <button type="submit" name="updateUserSubmit" value='Update' class="button">Update</button><br>
-                <a href="../dashboard.php" class="action"> <button class="button">Back</button></a>
+                <a href="../dashboard.php" action=" "> <button class="button">Back</button></a>
             </div></form>
         
        

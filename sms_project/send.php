@@ -11,7 +11,7 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPmailer.php';
 require 'phpmailer/src/SMTP.php';
 
-if(isset($_POST["newUserSubmit"] ) || isset($_POST["updateUserSubmit"])){
+// if(isset($_POST["newUserSubmit"] ) || isset($_POST["updateUserSubmit"])){
     $mail = new PHPmailer(true);
 
     $mail->isSMTP();
@@ -38,26 +38,26 @@ $mail->Body = $text.$text5."<br>".$text3.$_POST['eMail']."<br>".$text4.$_POST['p
 $mail->send();
 
 
-if (isset($_POST['newUserSubmit'])) {
-    $userfirstName = $_POST['firstName'];   
-    $userlastName = $_POST['lastName'];
-    $userMail = $_POST['eMail'];
-    $userPassword = $_POST['password'];
-    $userAptId = $fetch['aptId'];
-    $userRollId =3;
+// if (isset($_POST['newUserSubmit'])) {
+//     $userfirstName = $_POST['firstName'];   
+//     $userlastName = $_POST['lastName'];
+//     $userMail = $_POST['eMail'];
+//     $userPassword = $_POST['password'];
+//     $userAptId = $fetch['aptId'];
+//     $userRollId =3;
 
-    $user->add($userfirstName, $userlastName, $userMail, $userPassword, $userAptId, $userRollId);
-}
+//     $user->add($userfirstName, $userlastName, $userMail, $userPassword, $userAptId, $userRollId);
+// }
 
-if (isset($_POST['updateUserSubmit'])) {
-    $userId = $_POST['userId'];
-    $userfirstName = $_POST['firstName'];
-    $userlastName = $_POST['lastName'];
-    $userEmail = $_POST['eMail'];
-    $userAptId = $_POST['aptId'];
+// if (isset($_POST['updateUserSubmit'])) {
+//     $userId = $_POST['userId'];
+//     $userfirstName = $_POST['firstName'];
+//     $userlastName = $_POST['lastName'];
+//     $userEmail = $_POST['eMail'];
+//     $userAptId = $_POST['aptId'];
 
-    $user->updateUserInfo($userId, $userfirstName, $userlastName, $userEmail,$userAptId);
-}
+//     $user->updateUserInfo($userId, $userfirstName, $userlastName, $userEmail,$userAptId);
+// }
 echo
 "
 <script>
@@ -66,6 +66,6 @@ alert('Email Sent Successfully  And User Added SuccessFully');
 document.location.href = './user/chairmenDash.php';
 </script>
 ";
-}
+// }
 
 ?>

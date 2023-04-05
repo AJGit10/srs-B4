@@ -153,6 +153,7 @@ $idOfChairPerson = $fetch['aptId'];
                                 <th>Role</th>
                                 <th>Update</th>
                                 <th>Delete</th>
+								<th>Profile</th>
                                 
                                
                             </tr>
@@ -182,6 +183,9 @@ $idOfChairPerson = $fetch['aptId'];
                                     </td>
                                     <td><a href="../user/userDelete.php?id=<?=$row3['userId'] ?>"><button
                                                 style="background-color:red;  border: none;  color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer; ">Delete</button></a>
+                                    </td>
+									<td><a href="../chairmen/uploadProfile.php"><button
+                                                style="background-color: green;  border: none; color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer; ">Upload Profile</button></a>
                                     </td>
                                     </tr>
                                     <?php ?>

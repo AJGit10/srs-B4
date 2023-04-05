@@ -1,23 +1,36 @@
 <?php
 // include('../protected/header.php');
 // include('../public/meta.php');
-include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/header.php');
-include($_SERVER["DOCUMENT_ROOT"].'/sms_project/public/meta.php');
+include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/protected/header.php');
+include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/public/meta.php');
 
 // session_start();
 // include('../library/user.php');
-if (isset($_POST['newUserSubmit'])) {
-    $userfirstName = $_POST['firstName'];   
-    $userlastName = $_POST['lastName'];
-    $userMail = $_POST['eMail'];
-    $userPassword = $_POST['password'];
-    $userAptId = $_POST['aptId'];
-    $userRollId = $_POST['rollId'];
 
-    $user->add($userfirstName, $userlastName, $userMail, $userPassword, $userAptId, $userRollId);
+if (isset($_POST['newUserSubmit'])) {
+    $firstName = $_POST['firstName'];
+
+    $lastName = $_POST['lastName'];
+
+    $eMail = $_POST['eMail'];
+    $password = $_POST['password'];
+    $AptId = $_POST['aptId'];
+    $rollId = $_POST['rollId'];
+    if (!preg_match("/^[a-zA-Z_]+$/", $firstName, $lastName)) {
+        echo "Please Enter Valid Name";
+    } else {
+        $user->add($firstName, $lastName, $eMail, $password, $AptId, $rollId);
+    }
+
+
+
 
 }
 
+
+
+
+// $user->validateUsername($firstName,$lastName);
 ?>
 
 
@@ -30,7 +43,7 @@ if (isset($_POST['newUserSubmit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style1.css">
     <title>Registration Form</title>
-    
+
 </head>
 
 <body>
@@ -45,14 +58,19 @@ if (isset($_POST['newUserSubmit'])) {
     </div> -->
     <!-- partial:index.partial.html -->
     <div class="login-form">
-        
-        <form action="../send.php" method="post">
+
+        <form action="" method="post">
             <h1>Add new user</h1>
             <div class="content">
                 <div class="input-field">
                     <input type="text" placeholder="First name" class="tb" name="firstName" required>
+
+
                     <br>
                     <input type="text" placeholder="Last name" class="tb" name="lastName" required>
+
+
+
                 </div>
                 <div class="input-field">
 
@@ -69,8 +87,8 @@ if (isset($_POST['newUserSubmit'])) {
                     <input type="text" placeholder="roleId" class="tb" name="rollId" required>
                 </div>
             </div>
-            <div class="input-field" action="../send.php">
-                <button type="submit" name="newUserSubmit" value='Sign up' class="button">sign up</button><br>
+            <div class="input-field" action=" ">
+                <button type="submit" name="newUserSubmit" value='Sign up' class="button">ADD</button><br>
                 <a href="dashboard.php"><button class="button">Back</button></a>
                 <!-- <button><input type="submit" name="submit" value="signup"></button> -->
             </div>
@@ -81,5 +99,5 @@ if (isset($_POST['newUserSubmit'])) {
 </html>
 
 <?php
-include($_SERVER["DOCUMENT_ROOT"].'/sms_project/protected/footer.php');
+include($_SERVER["DOCUMENT_ROOT"] . '/sms_project/protected/footer.php');
 ?>
