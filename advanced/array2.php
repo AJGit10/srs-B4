@@ -3,44 +3,21 @@ $str='{"movies":[{"id":0,"title":"The Godfather","director":"Francis Ford Coppol
 
 $array= json_decode($str, TRUE);
 
-// echo "<pre>"; print_r($array);echo "</pre>";
-// exit();
-// echo var_dump($array);
 
-// foreach($array as $movies){
-	
-// 	$Title = $array['title'];
-// 	$Release_date =$array['yearReleased'];
-// 	$Director =$array['director'];	
-// 	$Cast =$array['cast'];
-// 	echo "$Title: " . $array['title'] . "<br>";
-// 	echo "$Release_date: " . $array['yearReleased'] . "<br>";
-// 	echo "$Director: " . $array['director'] . "<br>";
-
-// 	echo "Cast: " . $array['cast']. "<br><br>";
-//   }
 
 
 foreach($array as $row)
 
 {
-	// echo "<pre>";
 
-	// print_r($row);
 	foreach($row as  $k) {
-		// echo"<br>";
-		// echo "<pre>kkk";
-		// print_r($k['title']);
 		echo "ID: " . $k['id'] . "<br>";
 		echo "Title: " . $k['title']. " ".  "(" . ($k['yearReleased']). ")" ."<br>" ;
-	// echo "Release date: " . $k['yearReleased'] . "<br>";
 	echo "Director: " . $k['director'] . "<br>";
-	// echo "Cast: " . $k['cast'] . "<br>";
 	echo "Cast: " .implode(", ",$k['cast']). "<br><br>";
 
 
-	// echo "Cast: " . implode(', ', $k['cast']) . "<br><br>";
-	
-	}
+
+}
 }exit;
 ?>

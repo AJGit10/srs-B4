@@ -8,5 +8,6 @@ function reverse_strings($strings): array {
 // Example usage:
 
 $reversed = reverse_strings($strings);
-print_r($reversed);
+echo'["' . implode('", "', $reversed) . '"]';
+
 ?>

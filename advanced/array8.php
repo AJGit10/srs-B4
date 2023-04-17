@@ -11,4 +11,14 @@ function toTitleCase($strings) {
   $result = toTitleCase($strings);
   $output = json_encode($result);
   echo $output;
+echo"<br>";
+
+  
+
+
+foreach ($strings as $element) {
+  echo strtoupper($element) . "<br>";
+}
 ?>
+
+ <!-- "THE QUICK BROWN FOX" ,"JUMPED OVER" , "THE LAZY DOG"   -->
