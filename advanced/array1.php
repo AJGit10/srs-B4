@@ -54,6 +54,7 @@ $str= '[{"partner_name":"Liquid Education","lead_payIn":"44.00"},{"partner_name"
 	
 	  
 }
+
 echo "Total value for Liquid Education: $total_liquid_education" ."<br>";
 echo "Total value for total_Telesolutions: $total_Telesolutions"."<br>";
 echo "Total value for total_Yodel_Voice: $total_Yodel_Voice"."<br>";
