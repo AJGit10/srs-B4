@@ -11,13 +11,13 @@ if (isset($_POST['newUserSubmit'])) {
     $password = $_POST['password'];
     $AptId = $_POST['aptId'];
     $rollId = $_POST['rollId'];
-    if (!preg_match("/^[a-zA-Z_]+$/", $firstName . 
-     $lastName)) {
+    if (!preg_match("/^[a-zA-Z_]+$/", $firstName . $lastName)) {
         echo "Please Enter Valid Name";
     } else {
-        $sql= "INSERT INTO `user`(`firstName`, `lastName`, `eMail`,`password`, `aptId`,`rollId`) VALUES ('$firstName','$lastName','$eMail','$password','$AptId','$rollId')";
+        $sql= "INSERT INTO `user`(`firstName`,`lastName`,`eMail`,`password`,`aptId`,`rollId`) VALUES ('$firstName','$lastName','$eMail','$password','$AptId','$rollId')";
     }
-$result=conn->query($sql);
+    $result =$conn->query($sql);
+
 // print($sql);
 // exit();
 
