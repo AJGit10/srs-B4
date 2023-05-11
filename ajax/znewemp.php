@@ -133,13 +133,14 @@ include "database.php";
               <td>" . $row['emp_id'] . "</td>
 
               <td>" . $row['name']. "</td>
-              <td>" . $row['eMail'] . "</td>" ?>
+              <td>" . $row['eMail'] . "</td>" 
+              ?>
               <td><button type="button" id="btn-search"  button
                                                 style="background-color: green;  border: none; color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer; ">Update</button></td>
         <td><button type="button" id="search-buttons"  button style="background-color: red;  border: none; color: white;  padding: 15px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer; ">DELETE</button></td>
 
           </tr>
-
+<input type="hidden" id="imp_id" value="<?php echo $row['emp_id'];?>">
             <?php } 
               
         }
@@ -153,11 +154,13 @@ include "database.php";
 <script>
 $(document).ready(function() {
   $('#search-buttons').click(function() {
-    var employeeName = $('#search-input').val(); // Get the employee name entered in the search input field
+    var employeeid = $('#imp_id').val(); // Get the employee name entered in the search input field
+    
+    
     $.ajax({
       url: 'zdelete.php', // URL of the PHP script that fetches employee records
       type: 'POST',
-      data: {name: employeeName},
+      data: {'employeeid': employeeid},
       success: function(response) {
         $('#result-container').html(response); // Display the fetched employee records in the result container
       },
@@ -167,13 +170,16 @@ $(document).ready(function() {
     });
   });
 });
+
 $(document).ready(function() {
   $('#btn-search').click(function() {
-    var employeeName = $('#search-input').val(); // Get the employee name entered in the search input field
+    var employeeid = $('#imp_id').val(); // Get the employee name entered in the search input field
+    
+    
     $.ajax({
       url: 'zupdate.php', // URL of the PHP script that fetches employee records
       type: 'POST',
-      data: {name: employeeName},
+      data: {'employeeid': employeeid},
       success: function(response) {
         $('#result-container').html(response); // Display the fetched employee records in the result container
       },
