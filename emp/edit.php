@@ -25,7 +25,7 @@ $result1 = mysqli_query($conn, $query1);
 $row = mysqli_fetch_assoc($result1);
 
 // Close the database connection
-mysqli_close($conn);
+// mysqli_close($conn);
 ?>
 
 <!-- HTML code for the edit form -->
