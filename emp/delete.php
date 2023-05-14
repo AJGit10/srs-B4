@@ -24,13 +24,13 @@ mysqli_close($conn);
              <div class="content">
 
              <div class="input-field">
-             <input type="number" placeholder="<?php echo $row['emp_id']; ?>" class="tb" >
+             <input type="number" placeholder="<?php echo $row['emp_id'] ?>" class="tb" >
              <div class="input-field">
              <div class="input-field">
-               <input type="text" placeholder="<?php echo $row['name']; ?>" class="tb" >
+               <input type="text" placeholder="<?php echo $row['name'] ?>" class="tb" >
              </div>
              <div class="input-field">
-               <input type="text" placeholder="<?php echo $row['email']; ?>" class="tb" >
+               <input type="text" placeholder="<?php echo $row['email'] ?>" class="tb" >
              </div>
                    <h2>
                      <?php echo "Are You Sure!!!" ?>

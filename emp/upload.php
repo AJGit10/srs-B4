@@ -55,8 +55,11 @@ if (isset($_POST['newUserSubmit'])) {
   
   if ($result) {
     echo "Record inserted successfully.";
+    // echo 
+    // "<script> alert('Data Uploaded Successfully'); </script>"
+    // ;
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+  
   }
 }
 ?>
@@ -69,17 +72,63 @@ if (isset($_POST['newUserSubmit'])) {
       <input type="text" id="name" name="name" required><br><br>
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required><br><br>
-      <label for="attachment1">Attachment 1:</label>
+      <label for="attachment1">Image:</label>
       <input type="file" id="attachment1" name="attachment1"><br><br>
 
-      <label for="attachment2">Attachment 1:</label>
+      <label for="attachment2">Audio:</label>
       <input type="file" id="attachment2" name="attachment2"><br><br>
 
 
-      <label for="attachment3">Attachment 1:</label>
+      <label for="attachment3">Video:</label>
       <input type="file" id="attachment3" name="attachment3"><br><br>
 
       <input type="submit" name="newUserSubmit" value="Submit">
     </form>
   </body>
 </html>
+<?php
+$emp_id="";
+// Retrieve record from the database
+$sql = "SELECT * FROM employee WHERE emp_id = '$emp_id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  $row = $result->fetch_assoc();
+  
+  // Get file paths from database
+  $image_path = $row['image'];
+  $audio_path = $row['audio'];
+  $video_path = $row['video'];
+  
+  // Button to show image
+  echo '<button onclick="showAttachment(\''.$image_path.'\')">Show Image</button>';
+  
+  // Button to show audio
+  echo '<button onclick="showAttachment(\''.$audio_path.'\')">Show Audio</button>';
+  
+  // Button to show video
+  echo '<button onclick="showAttachment(\''.$video_path.'\')">Show Video</button>';
+}
+?>
+
+<!-- JavaScript function to show attachment in a pop-up window -->
+<script>
+function showAttachment(path) {
+  // Create a new window for the attachment
+  var win = window.open('', '_blank');
+  
+  // Check file type and set appropriate content type
+  if (path.endsWith('.mp3')) {
+    win.document.contentType = 'audio/mpeg';
+  } else if (path.endsWith('.mp4')) {
+    win.document.contentType = 'video/mp4';
+  } else {
+    win.document.contentType = 'image/*';
+  }
+  
+  // Load the attachment into the new window
+  win.document.write('<embed src="' + path + '" type="' + win.document.contentType + '" />');
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+

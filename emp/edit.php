@@ -2,17 +2,17 @@
 include "db.php"; 
 $emp_id = $_POST["emp_id"];
 
-if (isset($_POST['updateUserSubmit'])) {
-  $emp_id = $_POST["emp_id"];
-  $name= $_POST["name"];
-  $mail= $_POST["email"];
+// if (isset($_POST['updateUserSubmit'])) {
+//   $emp_id = $_POST["emp_id"];
+//   $name= $_POST["name"];
+//   $mail= $_POST["email"];
 
-  // if (!preg_match("/^[a-zA-Z_]+$/", $userfirstName . $userlastName)) {
-  //   echo " ";
-  // } else {
-    $query = "UPDATE employee SET name='$name', mail='$mail' WHERE emp_id='$emp_id'";
-    $result = mysqli_query($conn, $query);
-  }
+//   // if (!preg_match("/^[a-zA-Z_]+$/", $userfirstName . $userlastName)) {
+//   //   echo " ";
+//   // } else {
+//     $query = "UPDATE employee SET name='$name', mail='$mail' WHERE emp_id='$emp_id'";
+//     $result = mysqli_query($conn, $query);
+//   }
 
 // Retrieve the emp_id value from the AJAX request
 
@@ -23,9 +23,11 @@ if (isset($_POST['updateUserSubmit'])) {
 $query1 = "SELECT * FROM employee WHERE emp_id = '$emp_id'";
 $result1 = mysqli_query($conn, $query1);
 $row = mysqli_fetch_assoc($result1);
+print_r($row);
+exit();
 
 // Close the database connection
-// mysqli_close($conn);
+mysqli_close($conn);
 ?>
 
 <!-- HTML code for the edit form -->

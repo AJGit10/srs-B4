@@ -1,59 +1,19 @@
 <?php
 include "db.php"; 
-
 if (isset($_POST['newUserSubmit'])) {
   $emp_id= $_POST['emp_id'];
+
   $name = $_POST['name'];
+
   $mail = $_POST['email'];
-  $image = '';
   
-  if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
-    $target_dir = 'upload/';
-    $image = basename($_FILES['image']['name']);
-    $target_file = $target_dir . $image;
-    if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-      die('Error uploading file.');
-    }
-  }
-  
-  $sql = "INSERT INTO `employee`(`emp_id`, `name`, `email`, `image`) VALUES ('$emp_id', '$name', '$mail', '$image')";
-  $result = $conn->query($sql);
+  // if (!preg_match("/^[a-zA-Z_]+$/", $name)) {
+  //     echo "Please Enter Valid Name";
+  // } else {
+      $sql= "INSERT INTO `employee`(`emp_id`,`name`,`email`) VALUES ('$emp_id','$name','$mail')";
+  // }
+  $result =$conn->query($sql);
 }
-
-  // $title = $_POST['title'];
-  // $emp_id=$_POST['emp_id'];
-
-  // $file_name = '';
-  // $file_name1 = '';
-  // $file_name2 = '';
-
-  // if ($_FILES['file_name']['size'] > 0) {
-  //   $target_dir = 'uploads/';
-  //   $file_name = basename($_FILES['file_name']['name']);
-  //   $target_file = $target_dir . $file_name;
-  //   if (!move_uploaded_file($_FILES['file_name']['tmp_name'], $target_file)) {
-  //     die('Error uploading file.');
-  //   }
-  // }
-  // if ($_FILES['file_name']['size'] > 0) {
-  //   $target_dir = 'uploads/';
-  //   $file_name1 = basename($_FILES['file_name']['name']);
-  //   $target_file = $target_dir . $file_name;
-  //   if (!move_uploaded_file($_FILES['file_name']['tmp_name'], $target_file)) {
-  //     die('Error uploading file.');
-  //   }
-  // }
-  // if ($_FILES['file_name']['size'] > 0) {
-  //   $target_dir = 'uploads/';
-  //   $file_name2 = basename($_FILES['file_name']['name']);
-  //   $target_file = $target_dir . $file_name;
-  //   if (!move_uploaded_file($_FILES['file_name']['tmp_name'], $target_file)) {
-  //     die('Error uploading file.');
-  //   }
-  // }
-  // $sql = "INSERT INTO employee (emp_id, image, audio, video) VALUES ('$emp_id', )";
-  // $result = $conn->query($sql);
-
 
 ?>
 <head>
@@ -104,15 +64,6 @@ if (isset($_POST['newUserSubmit'])) {
         <div class="input-field">
             <input type="Email" placeholder="Email" name="email" required>
         </div>
-        <label for="attachment1">Attachment 1:</label>
-      <input type="file" id="attachment1" name="attachment1"><br><br>
-
-      <label for="attachment2">Attachment 1:</label>
-      <input type="file" id="attachment2" name="attachment2"><br><br>
-
-
-      <label for="attachment3">Attachment 1:</label>
-      <input type="file" id="attachment3" name="attachment3"><br><br>
 
     <div class="input-field" action=" ">
         <button type="submit" name="newUserSubmit" value='Sign up' class="button">ADD</button><br>
@@ -156,9 +107,8 @@ if (isset($_POST['newUserSubmit'])) {
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
-      <th>Attachments</th>
+      <th>Attachment</th>
       <th>Actions</th>
-
     </tr>
   </thead>
   <tbody>
@@ -169,30 +119,20 @@ if (isset($_POST['newUserSubmit'])) {
       $result = mysqli_query($conn, $query);
 
       // Display records in table rows
-      while ($row = mysqli_fetch_assoc($result)) {?>
-         <tr>
-         <td>  <?php echo $row["emp_id"]; ?> </td>
-         <td> <?php echo $row["name"]; ?> </td>
-         <td>  <?php echo $row["email"];?> </td>
-         <td>
-          
-          <form action="" method="post" enctype="multipart/form-data">
-  <input type="file" name="fileToUpload" id="fileToUpload1">
-  <input type="file" name="fileToUpload" id="fileToUpload2">
-  <input type="file" name="fileToUpload" id="fileToUpload3">
-  <input type="submit" value="Upload File" name="submit">
-</form>
-      
-        
-        </td>
-        <td>
-         <button class='editBtn' data-id='" .<?php echo $row["emp_id"]; ?>. "'>Update</button>
-         <button class='deleteBtn' data-id='" .<?php echo $row["emp_id"]; ?>. "'>Delete</button>
-        </td>
-        </tr>
-      <?php }
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . $row["emp_id"] . "</td>";
+        echo "<td>" . $row["name"] . "</td>";
+        echo "<td>" . $row["email"] . "</td>";
+        echo "<td><input type='file' name='attachment'></td>";
+        echo "<td>";
+        echo "<button class='editBtn' data-id='" . $row["emp_id"] . "'>Update</button>";
+        echo "<button class='deleteBtn' data-id='" . $row["emp_id"] . "'>Delete</button>";
+        echo "</td>";
+        echo "</tr>";
+      }
 
-    
+      
     ?>
   </tbody>
 </body>
@@ -234,7 +174,21 @@ $(document).ready(function() {
       }
     });
   });
-   
+//     $.ajax({
+//       url: "delete.php",
+//       type: "POST",
+//       data: { emp_id: emp_id },
+//       success: function(response) {
+//         $('#result-container').html(response);
+
+//         // Remove table row for the deleted record
+//         // $("button[data-id='" + emp_id + "']").closest("tr").remove();
+//       },
+//       error: function() {
+//         alert("Error deleting record.");
+//       }
+//     });
+//   });
 });
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
