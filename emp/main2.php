@@ -223,9 +223,9 @@ if (isset($_POST['newUserSubmit'])) {
                         echo "<button class='showBtn' data-id='" . $row["emp_id"] . "'>Show Image</button><br><br>";
     
     echo "<div id='result-container3'>";
-                        echo "<button class='showBtn2' data-audio='" . $row["audio"] . "'>Show Audio</button><br><br>";
+                        echo "<button class='showBtn2' data-id='" . $row["emp_id"] . "'>Show Audio</button><br><br>";
 
-                        echo "<button class='showBtn3' data-video='" . $row["video"] . "'>Show Video</button><br><br>";
+                        echo "<button class='showBtn3' data-id='" . $row["emp_id"] . "'>Show Video</button><br><br>";
 
 
                         echo "</td>";
@@ -296,6 +296,46 @@ if (isset($_POST['newUserSubmit'])) {
             });
         });
     });
+
+    $(document).ready(function () {
+        // Edit button click handler
+        $(".showBtn2").click(function () {
+            var emp_id = $(this).data("id");
+            $.ajax({
+                url: "showaudio.php",
+                type: "POST",
+                data: { emp_id: emp_id },
+                success: function (response) {
+                    $('#result-container3').html(response);
+                    // Display response in a modal or redirect to edit page
+                },
+                error: function () {
+                    alert("Error editing record.");
+                }
+            });
+        });
+    });
+
+
+    $(document).ready(function () {
+        // Edit button click handler
+        $(".showBtn3").click(function () {
+            var emp_id = $(this).data("id");
+            $.ajax({
+                url: "showvideo.php",
+                type: "POST",
+                data: { emp_id: emp_id },
+                success: function (response) {
+                    $('#result-container3').html(response);
+                    // Display response in a modal or redirect to edit page
+                },
+                error: function () {
+                    alert("Error editing record.");
+                }
+            });
+        });
+    });
+
 
 
 

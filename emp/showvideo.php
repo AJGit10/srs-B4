@@ -1,4 +1,4 @@
- <?php
+<?php
 include "db.php"; 
 $emp_id = $_POST["emp_id"];
 
@@ -25,10 +25,10 @@ img{
 
 <div id="display-image">
         <?php
-        $query = "SELECT image FROM employee WHERE emp_id=$emp_id";
+        $query = "SELECT video FROM employee WHERE emp_id=$emp_id";
         $result = mysqli_query($conn, $query);
 
-echo"query=".$query;
+
         
     
         
@@ -36,12 +36,9 @@ echo"query=".$query;
         while ($data = mysqli_fetch_assoc($result)) 
         {
         ?>
-            <img src="	
-upload/01 march.png">
+            <img src="<?php echo "$data";?>">
  
         <?php
-        print_r($data);
-        exit();
         }
         ?>
     </div>

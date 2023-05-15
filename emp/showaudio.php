@@ -1,4 +1,4 @@
- <?php
+<?php
 include "db.php"; 
 $emp_id = $_POST["emp_id"];
 
@@ -10,7 +10,7 @@ $row = mysqli_fetch_assoc($result1);
 ?>
 
 <style>
-    #display-image{ 
+    #display-audio{ 
     width: 100%;
     justify-content: center;
     padding: 5px;
@@ -23,12 +23,12 @@ img{
 }
 </style>
 
-<div id="display-image">
+<div id="display-audio">
         <?php
-        $query = "SELECT image FROM employee WHERE emp_id=$emp_id";
+        $query = "SELECT audio FROM employee WHERE emp_id=$emp_id";
         $result = mysqli_query($conn, $query);
 
-echo"query=".$query;
+
         
     
         
@@ -36,12 +36,9 @@ echo"query=".$query;
         while ($data = mysqli_fetch_assoc($result)) 
         {
         ?>
-            <img src="	
-upload/01 march.png">
+            <img src="<?php echo "$data";?>">
  
         <?php
-        print_r($data);
-        exit();
         }
         ?>
     </div>
