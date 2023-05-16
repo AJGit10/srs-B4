@@ -52,15 +52,15 @@ if ($_FILES['attachment1']['size'] > 0) {
  
   } elseif (strpos($fileType, 'audio') !== false) {
     // file is an audio file
-  $file_name = basename($_FILES['attachment1']['name']);
+  $file_name = 'upload/' . time(). $_SERVER['REMOTE_ADDR'] . '.mp3';
 
-    $target_dir = 'upload/audio/';
-    $target_file = $target_dir . $file_name;
+    // $target_dir = 'upload/audio/';
+    // $target_file = $target_dir . $file_name;
     
-    if (!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
+    if (!move_uploaded_file($_FILES['attachment1']['tmp_name'], $file_name)) {
       die('Error uploading file.');
     }
-    $attachment2 =  $target_file;
+    $attachment2 =  $file_name;
     
     
   } elseif (strpos($fileType, 'video') !== false) {
@@ -86,9 +86,9 @@ if ($_FILES['attachment1']['size'] > 0) {
 
 
 $query = "UPDATE employee SET name='$name', email='$mail', image='$attachment1', audio='$attachment2', video='$attachment3' WHERE emp_id='$emp_id'";
-//   $result = mysqli_query($conn, $query);
+  $result = mysqli_query($conn, $query);
 
-$result = $conn->query($sql);
+// $result = $conn->query($sql);
 }
 ?>
 <?php 

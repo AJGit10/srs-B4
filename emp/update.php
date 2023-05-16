@@ -5,10 +5,10 @@ $emp_id = $_POST["emp_id"];
 $name= $_POST["name"];
 $mail= $_POST["email"];
 
-// $query = "UPDATE employee SET name='$name', mail='$mail' WHERE emp_id='$emp_id'";
+$query = "UPDATE employee SET name='$name', mail='$mail' WHERE emp_id='$emp_id'";
 
-// $result = mysqli_query($conn, $query);
-// mysqli_close($conn);
+$result = mysqli_query($conn, $query);
+mysqli_close($conn);
 
 if ($_FILES['attachment1']['size'] > 0) {
     $fileType = $_FILES['attachment1']['type'];
@@ -63,9 +63,10 @@ if ($_FILES['attachment1']['size'] > 0) {
   }
 
 
-$sql = "INSERT INTO `employee`(`emp_id`,`name`,`email`,`image`,`audio`,`video`) VALUES ('$emp_id','$name','$mail','$attachment1','$attachment2','$attachment3')";
+// $sql = "INSERT INTO `employee`(`emp_id`,`name`,`email`,`image`,`audio`,`video`) VALUES ('$emp_id','$name','$mail','$attachment1','$attachment2','$attachment3')";
+// $sql= "UPDATE employee SET emp_id='$emp_id', name='$name', email='$mail' WHERE emp_id='$emp_id'";
 
-$result = $conn->query($sql);
+// $result = $conn->query($sql);
 
 
 ?>
