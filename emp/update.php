@@ -5,10 +5,9 @@ $emp_id = $_POST["emp_id"];
 $name= $_POST["name"];
 $mail= $_POST["email"];
 
-$query = "UPDATE employee SET name='$name', mail='$mail' WHERE emp_id='$emp_id'";
 
-$result = mysqli_query($conn, $query);
-mysqli_close($conn);
+
+
 
 if ($_FILES['attachment1']['size'] > 0) {
     $fileType = $_FILES['attachment1']['type'];
@@ -27,6 +26,11 @@ if ($_FILES['attachment1']['size'] > 0) {
         die('Error uploading file.');
       }
       $attachment1 =  $target_file;
+      $query = "UPDATE employee SET name='$name', email='$mail', image='$attachment1' WHERE emp_id='$emp_id'";
+
+$result = mysqli_query($conn, $query);
+mysqli_close($conn);
+
    
     } elseif (strpos($fileType, 'audio') !== false) {
       // file is an audio file
@@ -39,6 +43,15 @@ if ($_FILES['attachment1']['size'] > 0) {
         die('Error uploading file.');
       }
       $attachment2 =  $target_file;
+      $query = "UPDATE employee SET name='$name', email='$mail', audio='$attachment2' WHERE emp_id='$emp_id'";
+      echo $query;
+      exit();
+
+      $result = mysqli_query($conn, $query);
+      mysqli_close($conn);
+      
+      
+
       
       
     } elseif (strpos($fileType, 'video') !== false) {
@@ -52,15 +65,20 @@ if ($_FILES['attachment1']['size'] > 0) {
         die('Error uploading file.');
       }
       $attachment3 =  $target_file;
+      $query = "UPDATE employee SET name='$name', email='$mail', video='$attachment3' WHERE emp_id='$emp_id'";
 
+      $result = mysqli_query($conn, $query);
+      mysqli_close($conn);
+    }
+  }
       
      
-    } else {
-      die('Invalid file type.');
-    }
-  } else {
-    die('No file uploaded.');
-  }
+//     } else {
+//       die('Invalid file type.');
+//     }
+//   } else {
+//     die('No file uploaded.');
+//   }
 
 
 // $sql = "INSERT INTO `employee`(`emp_id`,`name`,`email`,`image`,`audio`,`video`) VALUES ('$emp_id','$name','$mail','$attachment1','$attachment2','$attachment3')";
@@ -68,5 +86,8 @@ if ($_FILES['attachment1']['size'] > 0) {
 
 // $result = $conn->query($sql);
 
+// $query = "UPDATE employee SET name='$name', email='$mail' WHERE emp_id='$emp_id'";
 
+// $result = mysqli_query($conn, $query);
+// mysqli_close($conn);
 ?>

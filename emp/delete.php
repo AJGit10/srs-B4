@@ -73,4 +73,3 @@ $(".deleteBtn").click(function() {
   });
 }});
 });
-</script>

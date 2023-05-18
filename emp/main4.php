@@ -25,10 +25,15 @@ if (isset($_POST['newUserSubmit'])) {
 
         if (strpos($fileType, 'image') !== false) {
             // file is an image
-            $file_name = basename($_FILES['attachment1']['name']);
+            $str = basename($_FILES['attachment1']['name']);
+            $file_name= str_replace(' ','',$str);
 
             $target_dir = 'upload/image/';
             $target_file = $target_dir . $file_name;
+            if (file_exists($target_file)) {
+                echo "Sorry, file already exists.";
+                
+              }
 
             if (!move_uploaded_file($_FILES['attachment1']['tmp_name'], $target_file)) {
                 die('Error uploading file.');
@@ -37,15 +42,23 @@ if (isset($_POST['newUserSubmit'])) {
 
         } elseif (strpos($fileType, 'audio') !== false) {
             // file is an audio file
-            $file_name = basename($_FILES['attachment1']['name']);
+            $str = basename($_FILES['attachment1']['name']);
 
+          $file_name= str_replace(' ','',$str);
+
+        
             $target_dir = 'upload/audio/';
             $target_file = $target_dir . $file_name;
-
-            if (!move_uploaded_file($_FILES['attachment1']['tmp_name'], $target_file)) {
-                die('Error uploading file.');
+            if (file_exists($target_file)) {
+                echo "Sorry, file already exists.";
+                
+              }
+            
+            if (!move_uploaded_file($_FILES['attachment1']['tmp_name'], $file_name)) {
+              die('Error uploading file.');
             }
-            $attachment2 = $target_file;
+            $attachment2 =  $file_name;
+            
 
 
         } elseif (strpos($fileType, 'video') !== false) {
@@ -72,7 +85,7 @@ if (isset($_POST['newUserSubmit'])) {
 
     $sql = "INSERT INTO `employee`(`emp_id`,`name`,`email`,`image`,`audio`,`video`) VALUES ('$emp_id','$name','$mail','$attachment1','$attachment2','$attachment3')";
 
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 }
 
 ?>
