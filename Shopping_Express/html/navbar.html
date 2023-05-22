@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Add some basic styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #71f063;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.navbar li a:hover {
+  background-color: #ddd;
+}
+
+/* Add symbols using Font Awesome */
+.navbar li a::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 5px;
+}
+
+/* Search bar styles */
+.search-container {
+  float: left;
+  margin-left: 20px;
+}
+
+.search-container input[type=text] {
+  padding: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+.search-container button {
+  padding: 6px 10px;
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <ul>
+    <li>
+      <a href="#"><i class="fas fa-home"></i> Logo</a>
+      </li><!-- Search bar -->
+      <li><div class="search-container">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+      <!-- End of search bar -->
+    </li>
+    <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+    <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
+    <li><a href="#"><i class="fas fa-shopping-cart"></i> Products</a></li>
+    <li><a href="#"><i class="fas fa-shopping-basket"></i> Cart</a></li>
+    <li><a href="#"><i class="fas fa-history"></i> My Order History</a></li>
+    <li><a href="./login.html"><i class="fas fa-user"></i> Login/Register</a></li>
+
+  </ul>
+</div>
+
+<!-- Rest of the page content -->
+<div style="height: 1500px; background-color: #f2f2f2;">
+  <!-- Add your page content here -->
+</div>
+
+<!-- Add Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
